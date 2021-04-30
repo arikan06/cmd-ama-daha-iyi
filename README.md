@@ -1,5 +1,5 @@
 # cmd ama daha iyi
-
+Subprocces modülü ile Cmd'yi geliştirdim
 ## İçindekiler:
 * [Tanıtım](#Tanıtım)
 * [Prototip](#Prototip:)
