@@ -1,4 +1,4 @@
-#komut tanımlama #İngilizce kodları da açmayı ve string split programı yeniden başlatma matrix hesap makinesi açma
+#komut tanımlama #İngilizce kodları da açmayı ve string split programı yeniden başlatma matrix hesap makinesi açma windows çalıştır + windows çalıştır recent komudu, return ne ona bakcaz
 import pip
 import subprocess
 print('cmd ama daha iyi mertfsmal')
@@ -26,12 +26,13 @@ while True:
                 subprocess.call(f"del {ikinciKomut}", shell= True)
             except NameError:
                 print('Yanlış kullanım. Doğru kullanım: "sil {silmek istediğiniz dosya}"')
-        if birinciKomut == 'pip' and ikinciKomut == 'install':
+        if birinciKomut == 'pip':
             try:
-                pip.main(['install', ucuncuKomut])
+                if ikinciKomut == 'indir':
+                    pip.main(['install', ucuncuKomut])
             except Exception as e:
-                print(e)
-                input()
+                print('Yanlış kullanım. Doğru kullanım: "pip indir {indirmek istediğiniz dosya}"')
+                pass
         if birinciKomut == 'ac':
             try:
                 subprocess.call(f'cd {ikinciKomut}', shell = True)
@@ -80,6 +81,11 @@ while True:
             subprocess.call('ipconfig', shell=True)
         if birinciKomut == 'wifi':
             try:
+                if ikinciKomut == 'detayli':
+                    try:
+                        subprocess.call(f"netsh wlan show profiles {ucuncuKomut} key=clear")
+                    except NameError:
+                        print('Yanlış kullanım. Doğru kullanım: "wifi detayli {wifi adı}"')
                 if ikinciKomut == 'sifreler':
                     data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8', errors="backslashreplace").split('\n')
                     profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
@@ -93,8 +99,8 @@ while True:
                                 print ("{:<30}|  {:<}".format(i, ""))
                         except subprocess.CalledProcessError:
                             print ("{:<30}|  {:<}".format(i, "ENCODING ERROR"))
-            except Exception as e:
-                subprocess.call('netsh wlan show profiles', shell=True)
+            except NameError as e:
+                subprocess.call(f'netsh wlan show profiles', shell=True)
     except Exception as e:
         print('Bu kod programa kayıtlı değildir. Lütfen tekrar deneyin.', e)
         pass
