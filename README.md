@@ -1,12 +1,16 @@
 # cmd ama daha iyi
 
-# İçindekiler
-1. [Program nasıl çalışıyor? (1.0)](#Program-nasıl-çalışıyor?-(1.0))
-  * [Programda bulunan komutlar (1.0):](#Programda-bulunan-komutlar-(1.0):)
-  * [1.0 Hataları](##-1.0-Hataları)
-4. [Program nasıl çalışıyor? (2.0)](#Program-nasıl-çalışıyor?-(2.0))
+# İçindekiler:
+1. [Tanıtım](#Tanıtım)
+2. [Program nasıl çalışıyor? (1.0.0)](#Program-nasıl-çalışıyor?-(1.0.0))
+  * [Programda bulunan komutlar (1.0.0):](#Programda-bulunan-komutlar-(1.0.0))
+  * [1.0 Hataları](##-1.0.0-Hataları)
+3. [Program nasıl çalışıyor? (2.0)](#Program-nasıl-çalışıyor?-(2.0))
 
-# Program nasıl çalışıyor? (1.0)
+# Tanıtım
+.
+
+# Program nasıl çalışıyor? (1.0.0)
 Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini programa ekliyor. Subprocces modülü programda cmd komutlarını çağırmamızı sağlıyor. Pip modülü programın özelliği olan modül indirmeyi sağlıyor. Programı açtıktan sonra sizden çalıştıracağınız komudu soruyor (üstte bulunan komutlardan) girdiğiniz karakterleri küçük harflere dönüştürüyor. Eğer Türkçe harf girdiyseniz program otomatik olarak Türkçe harfleri İngilizce harflere çeviriyor.
 
 * ı => i
@@ -18,7 +22,7 @@ Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini
 
 Bunları gerçekleştirdikten sonra program sizin girdiğiniz veri eğer üç kelimeden fazlaysa veya üç kelimeyse sırasıyla birinciKomut, ikinciKomut, ucuncuKomut olarak değişkenlere ayırıyor. Veriniz iki kelimeye eşitse birinciKomut ve ikinciKomut olarak değişkenlere ayırıyor. Veriniz bir kelimeyse birinciKomut olarak değişkene ayırıyor.  
 
-# Programda bulunan komutlar (1.0):
+# Programda bulunan komutlar (1.0.0):
 * pip             = Python modüllerini indirmeyi sağlar.
 * baslik          = Programın başlığını değiştirmenizi sağlar.
 * renk            = Programın rengini değiştirmenizi sağlar.
@@ -37,7 +41,7 @@ Bunları gerçekleştirdikten sonra program sizin girdiğiniz veri eğer üç ke
 * ip              = Ip bilgilerinizi gösterir.
 * yardim          = Üstteki komutları programda görmenizi sağlar
 
-## 1.0 Hataları:
+## 1.0.0 Hataları:
  * baslik komudunu çalıştırınca ucuncuKomut değişkenini eklemem ile artık başlığı 1 kelimeden fazla yapamıyoruz.
  * dizin olustur kullandıktan sonra dizin dersek ikinciKomut değişkeni değişmediği için dizin olustur komudunu tekrar çağırdığımızı sanıyor.
 
