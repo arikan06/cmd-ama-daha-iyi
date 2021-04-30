@@ -6,59 +6,63 @@ try:
 except Exception as e:
     print('Pythonun içinde kurulu olan modüller bulunamadı. Pythonu silip tekrar yüklemeyi deneyin.')
     input()
-
-print("""                      _    __                     _
-                     | |  / _|                   | |
-  _ __ ___   ___ _ __| |_| |_ ___ _ __ ___   __ _| |
- | '_ ` _ \ / _ \ '__| __|  _/ __| '_ ` _ \ / _` | |
- | | | | | |  __/ |  | |_| | \__ \ | | | | | (_| | |
- |_| |_| |_|\___|_|   \__|_| |___/_| |_| |_|\__,_|_|
-
-                                                    """)
-time.sleep(0.2)
-print('Versiyon: 2.0.0')
-time.sleep(0.2)
+time.sleep(0.06)
+print("""                       _    __                     _""")
+time.sleep(0.06)
+print("""                      | |  / _|                   | |""")
+time.sleep(0.06)
+print("""   _ __ ___   ___ _ __| |_| |_ ___ _ __ ___   __ _| |""")
+time.sleep(0.06)
+print("""  | '_ ` _ \ / _ \ '__| __|  _/ __| '_ ` _ \ / _` | |""")
+time.sleep(0.06)
+print("""  | | | | | |  __/ |  | |_| | \__ \ | | | | | (_| | |""")
+time.sleep(0.06)
+print("""  |_| |_| |_|\___|_|   \__|_| |___/_| |_| |_|\__,_|_|""")
+time.sleep(0.06)
+print()
+time.sleep(0.3)
+print('Versiyon: 2.0.1')
+time.sleep(0.3)
 print('Github: github.com/mertfsmal')
-time.sleep(0.2)
+time.sleep(0.3)
 print('Bütün komutları görmek için "yardım" yazın.')
 print()
-time.sleep(0.2)
+time.sleep(0.3)
+
+try:
+    def stringDuzenle(duzenlenecekString):
+        duzenlenecekString = duzenlenecekString.lower()
+        yeniCmdKomut1 = duzenlenecekString.replace("ı", "i")
+        yeniCmdKomut2 = yeniCmdKomut1.replace("ş", "s")
+        yeniCmdKomut3 = yeniCmdKomut2.replace("ç", "c")
+        yeniCmdKomut4 = yeniCmdKomut3.replace("ğ", "g")
+        yeniCmdKomut5 = yeniCmdKomut4.replace("ö", "o")
+        duzenlenecekString = yeniCmdKomut5.replace("ü", "u")
+        return duzenlenecekString
+except Exception as e:
+    print('stringDuzenle hata', e)
+    input()
 
 try:
     while True:
         print('----------------------------')
-        cmdKomutDuzenlenmemis=input('-> ')
-
-        def stringDuzenle():
-            print('string düzenle girildi')
-            global cmdKomutDuzenlenmemis
-            cmdKomutDuzenlenmemis = cmdKomutDuzenlenmemis.lower()
-            yeniCmdKomut1 = cmdKomutDuzenlenmemis.replace("ı", "i")
-            yeniCmdKomut2 = yeniCmdKomut1.replace("ş", "s")
-            yeniCmdKomut3 = yeniCmdKomut2.replace("ç", "c")
-            yeniCmdKomut4 = yeniCmdKomut3.replace("ğ", "g")
-            yeniCmdKomut5 = yeniCmdKomut4.replace("ö", "o")
-            cmdKomutDuzenlenmis = yeniCmdKomut5.replace("ü", "u")
-            print('string düzenlendi')
-
-        print('func çağırdık')
-        stringDuzenle()
-        print('Func bitir')
-
-        if len(cmdKomutDuzenlenmis.split()) == 0:
+        cmdKomutDuzenlenmemis=input('->  ')
+        if len(cmdKomutDuzenlenmemis.split()) == 0:
             print('Girmek istediğiniz komudu girin.')
             while True:
-                komutBekleniyor = input('-> ')
+                cmdKomutDuzenlenmemis = input('->  ')
                 if len(cmdKomutDuzenlenmemis.split()) >= 1:
-                    stringDuzenle()
+                    stringDuzenle(cmdKomutDuzenlenmemis)
                     False
-
-        elif len(cmdKomutDuzenlenmis.split()) >= 3:
-            birinciKomut, ikinciKomut, ucuncuKomut = cmdKomutDuzenlenmis.split(' ', 2)
-        elif len(cmdKomutDuzenlenmis.split()) == 2:
-            birinciKomut, ikinciKomut = cmdKomutDuzenlenmis.split(' ', 1)
         else:
-            birinciKomut = cmdKomutDuzenlenmis
+            if len(cmdKomutDuzenlenmemis.split()) >= 3:
+                birinciKomut, ikinciKomut, ucuncuKomut = cmdKomutDuzenlenmemis.split(' ', 2)
+                birinciKomut = stringDuzenle(birinciKomut)
+            if len(cmdKomutDuzenlenmemis.split()) >= 2:
+                birinciKomut, ikinciUzunKomut = cmdKomutDuzenlenmemis.split(' ', 1)
+                birinciKomut = stringDuzenle(birinciKomut)
+            if len(cmdKomutDuzenlenmemis.split()) == 1:
+                birinciKomut = stringDuzenle(cmdKomutDuzenlenmemis)
 
         if birinciKomut == 'yardim':
             print("""# Programda bulunan komutlar (1.0):
