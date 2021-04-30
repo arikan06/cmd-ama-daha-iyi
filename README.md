@@ -2,8 +2,8 @@
 
 # İçindekiler
 1. [Program nasıl çalışıyor? (1.0)](#Program-nasıl-çalışıyor?-(1.0))
-  1. [Programda bulunan komutlar (1.0):](#Programda-bulunan-komutlar-(1.0):)
-  2. [1.0 Hataları](##-1.0-Hataları)
+  * [Programda bulunan komutlar (1.0):](#Programda-bulunan-komutlar-(1.0):)
+  * [1.0 Hataları](##-1.0-Hataları)
 4. [Program nasıl çalışıyor? (2.0)](#Program-nasıl-çalışıyor?-(2.0))
 
 # Program nasıl çalışıyor? (1.0)
