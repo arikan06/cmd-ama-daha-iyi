@@ -1,14 +1,14 @@
 # cmd ama daha iyi
 
-# İçindekiler:
+## İçindekiler:
 * [Tanıtım](#Tanıtım)
 * [Program nasıl çalışıyor? (1.0.0)](#Program-nasıl-çalışıyor?-(1.0.0))
- * [Programda bulunan komutlar (1.0.0):](#Programda-bulunan-komutlar-(1.0.0))
- * [1.0.0 Hataları](##1.0.0-Hataları)
-*. [Program nasıl çalışıyor? (2.0.0)](#Program-nasıl-çalışıyor?-(2.0.0))
+  * [Programda bulunan komutlar (1.0.0):](#Programda-bulunan-komutlar-(1.0.0))
+  * [1.0.0 Hataları](##1.0.0-Hataları)
+* [Program nasıl çalışıyor? (2.0.0)](#Program-nasıl-çalışıyor?-(2.0.0))
 
 # Tanıtım
-.
+[boş]
 
 # Program nasıl çalışıyor? (1.0.0)
 Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini programa ekliyor. Subprocces modülü programda cmd komutlarını çağırmamızı sağlıyor. Pip modülü programın özelliği olan modül indirmeyi sağlıyor. Programı açtıktan sonra sizden çalıştıracağınız komudu soruyor (üstte bulunan komutlardan) girdiğiniz karakterleri küçük harflere dönüştürüyor. Eğer Türkçe harf girdiyseniz program otomatik olarak Türkçe harfleri İngilizce harflere çeviriyor.
@@ -22,7 +22,7 @@ Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini
 
 Bunları gerçekleştirdikten sonra program sizin girdiğiniz veri eğer üç kelimeden fazlaysa veya üç kelimeyse sırasıyla birinciKomut, ikinciKomut, ucuncuKomut olarak değişkenlere ayırıyor. Veriniz iki kelimeye eşitse birinciKomut ve ikinciKomut olarak değişkenlere ayırıyor. Veriniz bir kelimeyse birinciKomut olarak değişkene ayırıyor.  
 
-# Programda bulunan komutlar (1.0.0):
+## Programda bulunan komutlar (1.0.0):
 * pip             = Python modüllerini indirmeyi sağlar.
 * baslik          = Programın başlığını değiştirmenizi sağlar.
 * renk            = Programın rengini değiştirmenizi sağlar.
