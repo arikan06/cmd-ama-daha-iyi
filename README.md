@@ -2,15 +2,17 @@
 
 ## İçindekiler:
 * [Tanıtım](#Tanıtım)
-* [Program nasıl çalışıyor? (1.0.0)](#Program-nasıl-çalışıyor?-(1.0.0))
+* [Prototip](#Prototip)
+  * [Program nasıl çalışıyor? (1.0.0)](#Program-nasıl-çalışıyor?-(1.0.0))
   * [Programda bulunan komutlar (1.0.0):](#Programda-bulunan-komutlar-(1.0.0))
   * [1.0.0 Hataları](##1.0.0-Hataları)
 * [Program nasıl çalışıyor? (2.0.0)](#Program-nasıl-çalışıyor?-(2.0.0))
 
 # Tanıtım
-[boş]
+buraları doldurcam
 
-# Program nasıl çalışıyor? (1.0.0)
+# Prototip
+## Program nasıl çalışıyor? (1.0.0)
 Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini programa ekliyor. Subprocces modülü programda cmd komutlarını çağırmamızı sağlıyor. Pip modülü programın özelliği olan modül indirmeyi sağlıyor. Programı açtıktan sonra sizden çalıştıracağınız komudu soruyor (üstte bulunan komutlardan) girdiğiniz karakterleri küçük harflere dönüştürüyor. Eğer Türkçe harf girdiyseniz program otomatik olarak Türkçe harfleri İngilizce harflere çeviriyor.
 
 * ı => i
