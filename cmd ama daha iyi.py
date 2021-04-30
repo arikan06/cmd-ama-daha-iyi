@@ -15,42 +15,42 @@ while True:
         yeniCmdKomut = yeniCmdKomut5.replace("ü", "u")
 
         if len(yeniCmdKomut.split()) >= 3:
-            ilkKomut, ikinciKomut, ucuncuKomut = yeniCmdKomut.split(' ', 2)
+            birinciKomut, ikinciKomut, ucuncuKomut = yeniCmdKomut.split(' ', 2)
         elif len(yeniCmdKomut.split()) == 2:
-            ilkKomut, ikinciKomut = yeniCmdKomut.split(' ', 1)
+            birinciKomut, ikinciKomut = yeniCmdKomut.split(' ', 1)
         else:
-            ilkKomut = yeniCmdKomut
+            birinciKomut = yeniCmdKomut
 
-        if ilkKomut == "sil":
+        if birinciKomut == "sil":
             try:
                 subprocess.call(f"del {ikinciKomut}", shell= True)
             except NameError:
                 print('Yanlış kullanım. Doğru kullanım: "sil {silmek istediğiniz dosya}"')
-        if ilkKomut == 'pip' and ikinciKomut == 'install':
+        if birinciKomut == 'pip' and ikinciKomut == 'install':
             try:
                 pip.main(['install', ucuncuKomut])
             except Exception as e:
                 print(e)
                 input()
-        if ilkKomut == 'ac':
+        if birinciKomut == 'ac':
             try:
                 subprocess.call(f'cd {ikinciKomut}', shell = True)
             except Exception as e:
                 print('Yanlış kullanım. Doğru kullanım: "ac {açmak istediğiniz dizin}"')
                 pass
-        if ilkKomut == 'baslik':
+        if birinciKomut == 'baslik':
             try:
                 subprocess.call(f'title {ikinciKomut}', shell = True)
             except Exception as e:
                 print('Yanlış kullanım. Doğru kullanım: "Başlık {başlığınız}"')
                 pass
-        if ilkKomut == 'renk':
+        if birinciKomut == 'renk':
             try:
                 subprocess.call(f'color {ikinciKomut}', shell = True)
             except Exception as e:
                 print('Yanlış kullanım. Doğru kullanım: "renk {dilediğiniz renk}"')
                 pass
-        if ilkKomut == 'standart':
+        if birinciKomut == 'standart':
             while True:
                 try:
                     normalCmd = input()
@@ -60,25 +60,25 @@ while True:
                         subprocess.call(normalCmd, shell=True)
                 except Exception as e:
                     print(e)
-        if ilkKomut == 'yardim':
+        if birinciKomut == 'yardim':
             print('Buraya baya şey yazcam şimdilik boş')
-        if ilkKomut == 'baslat':
+        if birinciKomut == 'baslat':
             subprocess.call('start', shell=True)
-        if ilkKomut == 'gecmis':
+        if birinciKomut == 'gecmis':
             subprocess.call('doskey /history', shell=True)
-        if ilkKomut == 'dizin':
+        if birinciKomut == 'dizin':
             try:
                 if ikinciKomut == 'olustur':
                     subprocess.call(f'mkdir {ucuncuKomut}', shell = True)
             except NameError:
                 subprocess.call('dir', shell=True)
-        if ilkKomut == 'agac':
+        if birinciKomut == 'agac':
             subprocess.call('tree', shell=True)
-        if ilkKomut == 'temizle':
+        if birinciKomut == 'temizle':
             subprocess.call('cls', shell=True)
-        if ilkKomut == 'ip bilgileri':
+        if birinciKomut == 'ip bilgileri':
             subprocess.call('ipconfig', shell=True)
-        if ilkKomut == 'wifi':
+        if birinciKomut == 'wifi':
             try:
                 if ikinciKomut == 'sifreler':
                     data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8', errors="backslashreplace").split('\n')
