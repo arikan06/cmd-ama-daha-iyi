@@ -62,7 +62,24 @@ while True:
                 except Exception as e:
                     print(e)
         if birinciKomut == 'yardim':
-            print('Buraya baya şey yazcam şimdilik boş')
+            print("""# Programda bulunan komutlar (1.0):
+* pip             = Python modüllerini indirmeyi sağlar.
+* baslik          = Programın başlığını değiştirmenizi sağlar.
+* renk            = Programın rengini değiştirmenizi sağlar.
+* wifi sifreler   = Bilgisayarınızda kayıtlı olan wifi şifrelerini gösterir.
+* wifi detayli    = Bilgisayarınızda kayıtlı olan wifi adreslerinin detaylı ayarlarını gösterir.
+* wifi            = Bağlanabilecek wifi adreslerini gösterir.
+* sil             = Dosya siler.
+* standart        = Normal Cmd'ye geçiş.
+* dizin           = Bulunduğunuzun dizini gösterir.
+* dizin olustur   = Klasör oluşturur.
+* baslat          = Cmd açar.
+* ac              = dizin açar.
+* gecmis          = yazdığınız komutların geçmişini gösterir.
+* agac            = Dosyalarınızı gösterir.
+* temizle         = Ekranı temizler.
+* ip              = Ip bilgilerinizi gösterir.
+* yardim          = Üstteki komutları programda görmenizi sağlar""")
         if birinciKomut == 'baslat':
             subprocess.call('start', shell=True)
         if birinciKomut == 'gecmis':
@@ -77,7 +94,7 @@ while True:
             subprocess.call('tree', shell=True)
         if birinciKomut == 'temizle':
             subprocess.call('cls', shell=True)
-        if birinciKomut == 'ip bilgileri':
+        if birinciKomut == 'ip':
             subprocess.call('ipconfig', shell=True)
         if birinciKomut == 'wifi':
             try:
