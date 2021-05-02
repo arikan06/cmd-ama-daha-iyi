@@ -1,18 +1,13 @@
 # cmd ama daha iyi
-Subprocces modülü ile Cmd'yi geliştirdim
+Cmd'yi Türkçe yapıp bazı özellikler ekledim.
 ## İçindekiler:
-* [Tanıtım](#Tanıtım)
-* [Prototip](#Prototip:)
+
+* [1.0.0](#Program-nasıl-çalışıyor?-(1.0.0))
   * [Program nasıl çalışıyor? (1.0.0)](#Program-nasıl-çalışıyor?-(1.0.0))
   * [Programda bulunan komutlar (1.0.0):](#Programda-bulunan-komutlar-(1.0.0))
   * [1.0.0 Hataları](##1.0.0-Hataları)
 * [Program nasıl çalışıyor? (2.0.0)](#Program-nasıl-çalışıyor?-(2.0.0))
 
-# Tanıtım
-buraları doldurcam
-
----
-# Prototip:
 
 ## Program nasıl çalışıyor? (1.0.0)
 Program ilk önce Python içinde yüklü olan "subprocces" ve "pip" modüllerini programa ekliyor. Subprocces modülü programda cmd komutlarını çağırmamızı sağlıyor. Pip modülü programın özelliği olan modül indirmeyi sağlıyor. Programı açtıktan sonra sizden çalıştıracağınız komudu soruyor (üstte bulunan komutlardan) girdiğiniz karakterleri küçük harflere dönüştürüyor. Eğer Türkçe harf girdiyseniz program otomatik olarak Türkçe harfleri İngilizce harflere çeviriyor.
@@ -52,3 +47,4 @@ Bunları gerçekleştirdikten sonra program sizin girdiğiniz veri eğer üç ke
 ---
 
 # Program nasıl çalışıyor? (2.0.0)
+Program ilk önce pip, subprocces, time ve json modüllerini programa ekliyor. Subprocces programda cmd komutlarını çağırmamızı sağlıyor, pip programdaki modül indirme özelliği için, time programın bir kaç saniye beklemesi için, json komutlar.json dosyasıyla çalışmak için. Program açıldığı zaman sizden bir değer istiyor ve bu değeri boş bırakırsanız o değeri doldurana kadar soracak. Değer girildikten sonra değerinize bağlı olarak birinciKomut, ikinciKomut, ikinciUzunKomut, ucuncuKomut olarak değişkenlere atıyor ve bu değişkenler ile program çalışıyor.
