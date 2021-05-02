@@ -3,9 +3,31 @@ try:
     import pip
     import subprocess
     import time
+    import json
 except Exception as e:
     print('Pythonun içinde kurulu olan modüller bulunamadı. Pythonu silip tekrar yüklemeyi deneyin.')
     input()
+
+
+
+try:
+    with open("komutlar.json", encoding='utf-8', errors='ignore') as f:
+        komutlarJson = json.load(f, strict=False)
+        komutlarJsonPrint = json.dumps(komutlarJson, indent=1)
+
+except FileNotFoundError as e:
+    print('komutlar.json bulunamadı, komutlar.json yaratılıyor..')
+    with open('komutlar.json','a+') as f:
+        komutlarJsonYarat = {
+         "Giris bilgileri": [
+
+        ]}
+        json.dump(komutlarJsonYarat, f, indent=1)
+        print("komutlar.json yaratıldı")
+        print('----------------------------------------------')
+        pass
+except Exception as e:
+    print(f"hata: {e}")
 time.sleep(0.06)
 print("""                       _    __                     _""")
 time.sleep(0.06)
@@ -21,7 +43,7 @@ print("""  |_| |_| |_|\___|_|   \__|_| |___/_| |_| |_|\__,_|_|""")
 time.sleep(0.06)
 print()
 time.sleep(0.3)
-print('Versiyon: 2.0.2')
+print('Versiyon: 2.0.3')
 time.sleep(0.3)
 print('Github: github.com/mertfsmal')
 time.sleep(0.3)
@@ -29,6 +51,8 @@ print('Bütün komutları görmek için "yardım" yazın.')
 print()
 time.sleep(0.3)
 
+baslikYardim = 'Yanlış kullanım. Doğru kullanım "başlık {başlığınız}"'
+yardimYardim = 'asdasd'
 try:
     def stringDuzenle(duzenlenecekString):
         duzenlenecekString = duzenlenecekString.lower()
@@ -54,36 +78,28 @@ try:
                 if len(cmdKomutDuzenlenmemis.split()) != 0:
                     break
         if len(cmdKomutDuzenlenmemis.split()) >= 3:
-            #ikinciUzunKomut = False
+            #ikinciUzunKomut = None
             birinciKomut, ikinciKomut, ucuncuKomut = cmdKomutDuzenlenmemis.split(' ', 2)
             birinciKomut = stringDuzenle(birinciKomut)
         if len(cmdKomutDuzenlenmemis.split()) >= 2:
-            #ikinciKomut, ucuncuKomut, = False
+            #ikinciKomut, ucuncuKomut, = None
             birinciKomut, ikinciUzunKomut = cmdKomutDuzenlenmemis.split(' ', 1)
             birinciKomut = stringDuzenle(birinciKomut)
         if len(cmdKomutDuzenlenmemis.split()) == 1:
-            #ikinciUzunKomut, ikinciKomut, ucuncuKomut, = False
+            #ikinciUzunKomut, ikinciKomut, ucuncuKomut, = None
             birinciKomut = stringDuzenle(cmdKomutDuzenlenmemis)
 
+
+        if birinciKomut == 'baslik':
+            try:
+                subprocess.call(f'title {ikinciUzunKomut}', shell = True)
+            except NameError:
+                print(baslikYardim)
+            except Exception as e:
+                print(e)
+                input()
         if birinciKomut == 'yardim':
-            print("""# Programda bulunan komutlar (1.0):
-* pip             = Python modüllerini indirmeyi sağlar.
-* baslik          = Programın başlığını değiştirmenizi sağlar.
-* renk            = Programın rengini değiştirmenizi sağlar.
-* wifi sifreler   = Bilgisayarınızda kayıtlı olan wifi şifrelerini gösterir.
-* wifi detayli    = Bilgisayarınızda kayıtlı olan wifi adreslerinin detaylı ayarlarını gösterir.
-* wifi            = Bağlanabilecek wifi adreslerini gösterir.
-* sil             = Dosya siler.
-* standart        = Normal Cmd'ye geçiş.
-* dizin           = Bulunduğunuzun dizini gösterir.
-* dizin olustur   = Klasör oluşturur.
-* baslat          = Cmd açar.
-* ac              = dizin açar.
-* gecmis          = yazdığınız komutların geçmişini gösterir.
-* agac            = Dosyalarınızı gösterir.
-* temizle         = Ekranı temizler.
-* ip              = Ip bilgilerinizi gösterir.
-* yardim          = Üstteki komutları programda görmenizi sağlar""")
+            print(komutlarJsonPrint)
 except Exception as e:
     print(e)
     input()
