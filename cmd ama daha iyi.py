@@ -11,21 +11,12 @@ except Exception as e:
     input()
 
 try:
-    with open("komutlar.json", encoding='utf-8', errors='ignore') as f:
-        komutlarJson = json.load(f, strict=False)
-        komutlarJsonPrint = json.dumps(komutlarJson, indent=1)
-
+    komutlarJson = json.load(open('komutlar.json'))
+    komutlarJsonPrint = json.dumps(komutlarJson, indent=1)
 except FileNotFoundError as e:
-    print('komutlar.json bulunamadı, komutlar.json yaratılıyor..')
-    with open('komutlar.json','a+') as f:
-        komutlarJsonYarat = {
-         "Giris bilgileri": [
-
-        ]}
-        json.dump(komutlarJsonYarat, f, indent=1)
-        print("komutlar.json yaratıldı")
-        print('----------------------------------------------')
-        pass
+    print('Aşağıdaki linkten komutlar.json dosyasını indirin.')
+    print('https://github.com/mertfsmal/cmd-ama-daha-iyi/blob/main/komutlar.json dosyasını indirin.')
+    input()
 except Exception as e:
     print(e)
     input()
@@ -48,7 +39,7 @@ print('Versiyon: 3')
 time.sleep(0.3)
 print('Github: github.com/mertfsmal')
 time.sleep(0.3)
-print('Bütün komutları görmek için "yardım" yazın.')
+print('Bütün komutları görmek için "_komutlar" yazın.')
 print()
 time.sleep(0.3)
 
@@ -65,6 +56,7 @@ try:
                 duzenlenecekString = duzenlenecekString.replace('"', '')
                 return duzenlenecekString
         else:
+            duzenlenecekStringTurkce = duzenlenecekString
             duzenlenecekString = duzenlenecekString.replace("İ", "i")
             duzenlenecekString = duzenlenecekString.lower()
             duzenlenecekString = duzenlenecekString.replace("ı", "i")
@@ -73,8 +65,10 @@ try:
             duzenlenecekString = duzenlenecekString.replace("ğ", "g")
             duzenlenecekString = duzenlenecekString.replace("ö", "o")
             duzenlenecekString = duzenlenecekString.replace("ü", "u")
+            duzenlenecekStringDegistiMi = duzenlenecekString
             duzenlenecekString = duzenlenecekString.replace("baslik", "title")
             duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
+            duzenlenecekString = duzenlenecekString.replace("renk", "color")
             duzenlenecekString = duzenlenecekString.replace("zaman", "date")
             duzenlenecekString = duzenlenecekString.replace("tarih", "date")
             duzenlenecekString = duzenlenecekString.replace("saat", "date")
@@ -82,14 +76,19 @@ try:
             duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
             duzenlenecekString = duzenlenecekString.replace("agac", "tree")
             duzenlenecekString = duzenlenecekString.replace("yeni", "start")
-            return duzenlenecekString
+            if duzenlenecekStringDegistiMi == duzenlenecekString:
+                duzenlenecekString = duzenlenecekStringTurkce
+                return duzenlenecekString
+            else:
+                return duzenlenecekString
 except Exception as e:
     print('stringDuzenle hata', e)
     input()
 
 try:
-    def ozellik():
-        print('Buraya ekstra kodları eklicem')
+    def komut():
+        if birinciKomut == '_komutlar':
+            print(komutlarJsonPrint)
 except Exception as e:
     print(e)
     input()
@@ -107,7 +106,7 @@ try:
             birinciKomut=cmdKomut
             birinciKomut=stringDuzenle(birinciKomut)
             if birinciKomut.startswith('_'):
-                ozellik()
+                komut()
             else:
                 subprocess.call(birinciKomut, shell=True)
         if len(cmdKomut.split()) == 2:
@@ -115,7 +114,7 @@ try:
             birinciKomut=stringDuzenle(birinciKomut)
             ikinciKomut=stringDuzenle(ikinciKomut)
             if birinciKomut.startswith('_'):
-                ozellik()
+                komut()
             else:
                 subprocess.call(f"{birinciKomut} {ikinciKomut}", shell=True)
         if len(cmdKomut.split()) == 3:
@@ -124,7 +123,7 @@ try:
             ikinciKomut=stringDuzenle(ikinciKomut)
             ucuncuKomut=stringDuzenle(ucuncuKomut)
             if birinciKomut.startswith('_'):
-                ozellik()
+                komut()
             else:
                 subprocess.call(f"{birinciKomut} {ikinciKomut} {ucuncuKomut}", shell=True)
         if len(cmdKomut.split()) == 4:
@@ -134,7 +133,7 @@ try:
             ucuncuKomut=stringDuzenle(ucuncuKomut)
             dorduncuKomut=stringDuzenle(dorduncuKomut)
             if birinciKomut.startswith('_'):
-                ozellik()
+                komut()
             else:
                 subprocess.call(f"{birinciKomut} {ikinciKomut} {ucuncuKomut} {dorduncuKomut}", shell=True)
         if len(cmdKomut.split()) >= 5:
