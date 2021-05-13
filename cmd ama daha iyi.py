@@ -1,6 +1,7 @@
 #komut tanımlama #İngilizce kodları da açmayı ve string split programı yeniden başlatma matrix hesap makinesi açma windows çalıştır + windows çalıştır recent komudu, return ne ona bakcaz
 # eğer title "title"
 #reboot komudu
+# _pip
 try:
     import pip
     import subprocess
@@ -18,7 +19,7 @@ except FileNotFoundError as e:
     print('https://github.com/mertfsmal/cmd-ama-daha-iyi/blob/main/komutlar.json dosyasını indirin.')
     input()
 except Exception as e:
-    print(e)
+    print('json hatası', e)
     input()
 time.sleep(0.06)
 print("""                       _    __                     _""")
@@ -86,12 +87,28 @@ except Exception as e:
     input()
 
 try:
-    def komut():
-        if birinciKomut == '_komutlar':
+    def kontrol(kontrolEdilecek):
+        if len(kontrolEdilecek.split()) >= komutlarJson['komutlar'][0][kontrolEdilecek][0]['gereksinim']:
+            kontrolDegisken = True
+            return kontrolDegisken
+        else:
+            kontrolDegisken = False
+            return kontrolDegisken
+except Exception as e:
+    print('kontrol def hata', e)
+    input()
+    
+try:
+    def komut(komutDegisken):
+        komutDegisken = str(komutDegisken)
+        komutDegisken = komutDegisken.replace('_', '', 1)
+        #kontrol(komutDegisken)
+        if komutDegisken == 'komutlar':
             print(komutlarJsonPrint)
 except Exception as e:
-    print(e)
+    print('komut bulunamadı bütün komutları görmek için _komutlar yazın.')
     input()
+    pass
 
 try:
     while True:
@@ -105,39 +122,44 @@ try:
         if len(cmdKomut.split()) == 1:
             birinciKomut=cmdKomut
             birinciKomut=stringDuzenle(birinciKomut)
+            calistirilacakKomut = birinciKomut
             if birinciKomut.startswith('_'):
-                komut()
+                komut(calistirilacakKomut)
             else:
-                subprocess.call(birinciKomut, shell=True)
+                subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 2:
             birinciKomut, ikinciKomut=cmdKomut.split()
             birinciKomut=stringDuzenle(birinciKomut)
             ikinciKomut=stringDuzenle(ikinciKomut)
+            calistirilacakKomut = birinciKomut, ikinciKomut
             if birinciKomut.startswith('_'):
-                komut()
+                komut(calistirilacakKomut)
             else:
-                subprocess.call(f"{birinciKomut} {ikinciKomut}", shell=True)
+                subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 3:
             birinciKomut, ikinciKomut, ucuncuKomut=cmdKomut.split()
             birinciKomut=stringDuzenle(birinciKomut)
             ikinciKomut=stringDuzenle(ikinciKomut)
             ucuncuKomut=stringDuzenle(ucuncuKomut)
+            calistirilacakKomut = birinciKomut, ikinciKomut, ucuncuKomut
             if birinciKomut.startswith('_'):
-                komut()
+                komut(calistirilacakKomut)
             else:
-                subprocess.call(f"{birinciKomut} {ikinciKomut} {ucuncuKomut}", shell=True)
+                subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 4:
             birinciKomut, ikinciKomut, ucuncuKomut, dorduncuKomut=cmdKomut.split()
             birinciKomut=stringDuzenle(birinciKomut)
             ikinciKomut=stringDuzenle(ikinciKomut)
             ucuncuKomut=stringDuzenle(ucuncuKomut)
             dorduncuKomut=stringDuzenle(dorduncuKomut)
+            calistirilacakKomut = birinciKomut, ikinciKomut, ucuncuKomut, dorduncuKomut
             if birinciKomut.startswith('_'):
-                komut()
+                komut(calistirilacakKomut)
             else:
-                subprocess.call(f"{birinciKomut} {ikinciKomut} {ucuncuKomut} {dorduncuKomut}", shell=True)
+                subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) >= 5:
-            print('En fazla 4 kelime yazabilirsiniz.')
+            cmdKomut = stringDuzenle(cmdKomut)
+            subprocess.call(cmdKomut, shell=True)
 except Exception as e:
-    print(e)
+    print('main hata', e)
     input()
