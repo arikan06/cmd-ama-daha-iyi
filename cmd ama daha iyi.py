@@ -48,40 +48,34 @@ baslikYardim = 'Yanlış kullanım. Doğru kullanım "başlık {başlığınız}
 yardimYardim = 'asdasd'
 try:
     def stringDuzenle(duzenlenecekString):
-        if duzenlenecekString.startswith('"') and duzenlenecekString.endswith('"'):
-            if len(duzenlenecekString) == 2:
-                print('çift tırnağın içini doldurmalısınız.')
-                duzenlenecekString = '[boş]'
-                return duzenlenecekString
-            if len(duzenlenecekString) >= 3:
-                duzenlenecekString = duzenlenecekString.replace('"', '')
-                return duzenlenecekString
+        duzenlenecekStringTurkce = duzenlenecekString
+        duzenlenecekString = duzenlenecekString.replace("İ", "i")
+        duzenlenecekString = duzenlenecekString.lower()
+        duzenlenecekString = duzenlenecekString.replace("ı", "i")
+        duzenlenecekString = duzenlenecekString.replace("ş", "s")
+        duzenlenecekString = duzenlenecekString.replace("ç", "c")
+        duzenlenecekString = duzenlenecekString.replace("ğ", "g")
+        duzenlenecekString = duzenlenecekString.replace("ö", "o")
+        duzenlenecekString = duzenlenecekString.replace("ü", "u")
+        duzenlenecekStringDegistiMi = duzenlenecekString
+        duzenlenecekString = duzenlenecekString.replace("baslik", "title")
+        duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
+        duzenlenecekString = duzenlenecekString.replace("renk", "color")
+        duzenlenecekString = duzenlenecekString.replace("zaman", "date")
+        duzenlenecekString = duzenlenecekString.replace("tarih", "date")
+        duzenlenecekString = duzenlenecekString.replace("saat", "date")
+        duzenlenecekString = duzenlenecekString.replace("bilgi", "cmd")
+        duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
+        duzenlenecekString = duzenlenecekString.replace("agac", "tree")
+        duzenlenecekString = duzenlenecekString.replace("yeni", "start")
+        duzenlenecekString = duzenlenecekString.replace("ac", "cd")
+        duzenlenecekString = duzenlenecekString.replace("dizin olustur", "mkdir")
+        duzenlenecekString = duzenlenecekString.replace("dizin", "dir")
+        if duzenlenecekStringDegistiMi == duzenlenecekString:
+            duzenlenecekString = duzenlenecekStringTurkce
+            return duzenlenecekString
         else:
-            duzenlenecekStringTurkce = duzenlenecekString
-            duzenlenecekString = duzenlenecekString.replace("İ", "i")
-            duzenlenecekString = duzenlenecekString.lower()
-            duzenlenecekString = duzenlenecekString.replace("ı", "i")
-            duzenlenecekString = duzenlenecekString.replace("ş", "s")
-            duzenlenecekString = duzenlenecekString.replace("ç", "c")
-            duzenlenecekString = duzenlenecekString.replace("ğ", "g")
-            duzenlenecekString = duzenlenecekString.replace("ö", "o")
-            duzenlenecekString = duzenlenecekString.replace("ü", "u")
-            duzenlenecekStringDegistiMi = duzenlenecekString
-            duzenlenecekString = duzenlenecekString.replace("baslik", "title")
-            duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
-            duzenlenecekString = duzenlenecekString.replace("renk", "color")
-            duzenlenecekString = duzenlenecekString.replace("zaman", "date")
-            duzenlenecekString = duzenlenecekString.replace("tarih", "date")
-            duzenlenecekString = duzenlenecekString.replace("saat", "date")
-            duzenlenecekString = duzenlenecekString.replace("bilgi", "cmd")
-            duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
-            duzenlenecekString = duzenlenecekString.replace("agac", "tree")
-            duzenlenecekString = duzenlenecekString.replace("yeni", "start")
-            if duzenlenecekStringDegistiMi == duzenlenecekString:
-                duzenlenecekString = duzenlenecekStringTurkce
-                return duzenlenecekString
-            else:
-                return duzenlenecekString
+            return duzenlenecekString
 except Exception as e:
     print('stringDuzenle hata', e)
     input()
@@ -97,13 +91,15 @@ try:
 except Exception as e:
     print('kontrol def hata', e)
     input()
-    
+
 try:
     def komut(komutDegisken):
         komutDegisken = str(komutDegisken)
         komutDegisken = komutDegisken.replace('_', '', 1)
         #kontrol(komutDegisken)
         if komutDegisken == 'komutlar':
+            print(komutlarJsonPrint)
+        if komutDegisken == 'wifi':
             print(komutlarJsonPrint)
 except Exception as e:
     print('komut bulunamadı bütün komutları görmek için _komutlar yazın.')
@@ -120,46 +116,32 @@ try:
                 if len(cmdKomut.split()) != 0:
                     break
         if len(cmdKomut.split()) == 1:
-            birinciKomut=cmdKomut
-            birinciKomut=stringDuzenle(birinciKomut)
-            calistirilacakKomut = birinciKomut
-            if birinciKomut.startswith('_'):
+            calistirilacakKomut = stringDuzenle(cmdKomut)
+            if calistirilacakKomut.startswith('_'):
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 2:
-            birinciKomut, ikinciKomut=cmdKomut.split()
-            birinciKomut=stringDuzenle(birinciKomut)
-            ikinciKomut=stringDuzenle(ikinciKomut)
-            calistirilacakKomut = birinciKomut, ikinciKomut
-            if birinciKomut.startswith('_'):
+            calistirilacakKomut = stringDuzenle(cmdKomut)
+            if calistirilacakKomut.startswith('_'):
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 3:
-            birinciKomut, ikinciKomut, ucuncuKomut=cmdKomut.split()
-            birinciKomut=stringDuzenle(birinciKomut)
-            ikinciKomut=stringDuzenle(ikinciKomut)
-            ucuncuKomut=stringDuzenle(ucuncuKomut)
-            calistirilacakKomut = birinciKomut, ikinciKomut, ucuncuKomut
-            if birinciKomut.startswith('_'):
+            calistirilacakKomut = stringDuzenle(cmdKomut)
+            if calistirilacakKomut.startswith('_'):
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) == 4:
-            birinciKomut, ikinciKomut, ucuncuKomut, dorduncuKomut=cmdKomut.split()
-            birinciKomut=stringDuzenle(birinciKomut)
-            ikinciKomut=stringDuzenle(ikinciKomut)
-            ucuncuKomut=stringDuzenle(ucuncuKomut)
-            dorduncuKomut=stringDuzenle(dorduncuKomut)
-            calistirilacakKomut = birinciKomut, ikinciKomut, ucuncuKomut, dorduncuKomut
-            if birinciKomut.startswith('_'):
+            calistirilacakKomut = stringDuzenle(cmdKomut)
+            if calistirilacakKomut.startswith('_'):
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
         if len(cmdKomut.split()) >= 5:
-            cmdKomut = stringDuzenle(cmdKomut)
-            subprocess.call(cmdKomut, shell=True)
+            calistirilacakKomut = stringDuzenle(cmdKomut)
+            subprocess.call(calistirilacakKomut, shell=True)
 except Exception as e:
     print('main hata', e)
     input()
