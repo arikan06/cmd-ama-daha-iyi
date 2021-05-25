@@ -1,14 +1,90 @@
 {
-  "Programda bulunan komutlar (2.0.3)" : [
- "baslik" ,[{
-   "kullanim":"başlık {başlığınız}",
-   "aciklama":"deneme",
-   "i":"ı",
-   "s":"ş",
-   "g":"ğ",
-   "s":"ş",
-   "o":"ö",
-   "u":"ü",
-   "c":"ç"
- }
- ]]}
+ "komutlar": [
+  {
+   "baslik": [
+    {
+     "kullanim": "baslik [basliginiz]",
+     "aciklama": "programin basligini degistirir",
+     "gereksinim": "2"
+    }
+   ]
+   ,"ip": [
+    {
+     "kullanim": "ip",
+     "aciklama": "ip adresinizi gosterir",
+     "gereksinim": "1"
+    }
+   ]
+   ,"renk": [
+    {
+     "kullanim": "renk [renk kodu]",
+     "aciklama": "yazilarin rengini degistirir",
+     "gereksinim": "2"
+    }
+   ]
+   ,"wifi detayli": [
+    {
+     "kullanim": "wifi detayli",
+     "aciklama": "wifi detaylarini gosterir",
+     "gereksinim": "2"
+    }
+   ]
+   ,"wifi sifreler": [
+    {
+     "kullanim": "wifi sifreler",
+     "aciklama": "kayitli wifi sifrelerini gosterir",
+     "gereksinim": "2"
+    }
+   ]
+   ,"sil": [
+    {
+     "kullanim": "sil [silinecek dosyanin adi]",
+     "aciklama": "dosya siler",
+     "gereksinim": "2"
+    }
+   ]
+   ,"temizle": [
+    {
+     "kullanim": "temizle",
+     "aciklama": "ekrani temizler",
+     "gereksinim": "1"
+    }
+   ]
+   ,"baslat": [
+    {
+     "kullanim": "baslat",
+     "aciklama": "yeni cmd baslatir",
+     "gereksinim": "1"
+    }
+   ]
+   ,"dizin": [
+    {
+     "kullanim": "dizin",
+     "aciklama": "bulundugunuz dizini gosterir",
+     "gereksinim": "1"
+    }
+   ]
+   ,"dizin olustur": [
+    {
+     "kullanim": "dizin olustur [olusturulacak dizin adi]",
+     "aciklama": "klasor olusturur",
+     "gereksinim": "3"
+    }
+   ]
+   ,"ac": [
+    {
+     "kullanim": "ac [klasor ismi]",
+     "aciklama": "klasorlerin icini gormenizi saglar",
+     "gereksinim": "2"
+    }
+   ]
+   ,"agac": [
+    {
+     "kullanim": "agac",
+     "aciklama": "bulundugunuz dizindeki dosyalari yazdirir",
+     "gereksinim": "1"
+    }
+   ]
+  }
+ ]
+}
