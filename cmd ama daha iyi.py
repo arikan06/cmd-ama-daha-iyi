@@ -3,7 +3,7 @@
 #reboot komudu
 # _pip
 try:
-    import pip
+    #import pip
     import subprocess
     import time
     import json
@@ -40,7 +40,7 @@ print('Versiyon: 3')
 time.sleep(0.3)
 print('Github: github.com/mertfsmal')
 time.sleep(0.3)
-print('Bütün komutları görmek için "_komutlar" yazın.')
+print('Bütün komutları görmek için ".komutlar" yazın.')
 print()
 time.sleep(0.3)
 
@@ -83,13 +83,31 @@ def stringDuzenle(duzenlenecekString):
             return duzenlenecekString
 
 def komut(komutDegisken):
-    komutDegisken = str(komutDegisken)
-    komutDegisken = komutDegisken.replace('_', '', 1)
-    kontrol(komutDegisken)
+    print('NOT: nedense duzenlenecekString func çalışmıyor o yüzden siz küçük karakterlerle ve ingilizce harflerle yazın yoksa program algılamaz.')
+    print()
+    komutDegisken = komutDegisken.replace(' .', '', 1)
     if komutDegisken == 'komutlar':
         print(komutlarJsonPrint)
     if komutDegisken == 'wifi':
-        print(komutlarJsonPrint)
+        print('wifi şifreler, wifi detayli')
+    if komutDegisken == 'wifi detayli':
+        subprocess.call('netsh wlan show profiles', shell=True)
+        k=input('Bilgisayarda kayıtlı wifi adresleri yukarıdadır. Detaylı bilgi öğrenmek istediklerinizin adresini girin. ')
+        subprocess.call(f'netsh wlan show profiles {k} key=clear', shell=True)
+    if komutDegisken == 'wifi sifreler':
+        data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8', errors="backslashreplace").split('\n')
+        profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
+        for i in profiles:
+            try:
+                results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', i, 'key=clear']).decode('utf-8', errors="backslashreplace").split('\n')
+                results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
+                try:
+                    print ("{:<30}|  {:<}".format(i, results[0]))
+                except IndexError:
+                    print ("{:<30}|  {:<}".format(i, ""))
+            except subprocess.CalledProcessError:
+                print ("{:<30}|  {:<}".format(i, "ENCODING ERROR"))
+        print()
 try:
     while True:
         cmdKomut=input('->  ')
@@ -104,7 +122,8 @@ try:
             for kelime in cmdKomut.split():
                 kelime = stringDuzenle(kelime)
                 calistirilacakKomut += f' {kelime}'
-            if calistirilacakKomut.startswith('_'):
+            #print(calistirilacakKomut.startswith())
+            if calistirilacakKomut.startswith(' .'):
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
