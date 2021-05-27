@@ -74,7 +74,18 @@ def stringDuzenle(duzenlenecekString):
         duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
         duzenlenecekString = duzenlenecekString.replace("agac", "tree")
         duzenlenecekString = duzenlenecekString.replace("yeni", "start")
+        duzenlenecekString = duzenlenecekString.replace("dizinyarat", "mkdir")
         duzenlenecekString = duzenlenecekString.replace("dizin", "dir")
+        duzenlenecekString = duzenlenecekString.replace("sil", "del")
+        duzenlenecekString = duzenlenecekString.replace("yazdir", "echo")
+        duzenlenecekString = duzenlenecekString.replace("bul", "find")
+        duzenlenecekString = duzenlenecekString.replace("yardim", "help")
+        duzenlenecekString = duzenlenecekString.replace("kurtar", "recover")
+        duzenlenecekString = duzenlenecekString.replace("adlandir", "rename")
+        duzenlenecekString = duzenlenecekString.replace("baglanti", "netstat")
+        duzenlenecekString = duzenlenecekString.replace("kapat", "shutdown")
+        duzenlenecekString = duzenlenecekString.replace("sistem", "systeminfo")
+        duzenlenecekString = duzenlenecekString.replace("depolamatamir", "chkdsk")
         duzenlenecekString = duzenlenecekString.replace("ac", "cd")
         if duzenlenecekStringDegistiMi == duzenlenecekString:
             duzenlenecekString = duzenlenecekStringTurkce
