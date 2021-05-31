@@ -46,17 +46,6 @@ print('Bütün komutları görmek için ".komutlar" yazın.')
 print()
 time.sleep(0.3)
 
-def ingilizce(ingilizcelestir):
-    ingilizcelestir = ingilizcelestir.replace("İ", "i")
-    ingilizcelestir = ingilizcelestir.lower()
-    ingilizcelestir = ingilizcelestir.replace("ı", "i")
-    ingilizcelestir = ingilizcelestir.replace("ş", "s")
-    ingilizcelestir = ingilizcelestir.replace("ç", "c")
-    ingilizcelestir = ingilizcelestir.replace("ğ", "g")
-    ingilizcelestir = ingilizcelestir.replace("ö", "o")
-    ingilizcelestir = ingilizcelestir.replace("ü", "u")
-    return ingilizcelestir
-
 def stringDuzenle(duzenlenecekString):
     if duzenlenecekString.startswith('"') and duzenlenecekString.endswith('"'):
         if len(duzenlenecekString) == 2:
@@ -68,7 +57,14 @@ def stringDuzenle(duzenlenecekString):
             return duzenlenecekString
     else:
         duzenlenecekStringTurkce = duzenlenecekString
-        duzenlenecekString = ingilizce(duzenlenecekString)
+        duzenlenecekString = duzenlenecekString.replace("İ", "i")
+        duzenlenecekString = duzenlenecekString.lower()
+        duzenlenecekString = duzenlenecekString.replace("ı", "i")
+        duzenlenecekString = duzenlenecekString.replace("ş", "s")
+        duzenlenecekString = duzenlenecekString.replace("ç", "c")
+        duzenlenecekString = duzenlenecekString.replace("ğ", "g")
+        duzenlenecekString = duzenlenecekString.replace("ö", "o")
+        duzenlenecekString = duzenlenecekString.replace("ü", "u")
         duzenlenecekStringDegistiMi = duzenlenecekString
         duzenlenecekString = duzenlenecekString.replace("baslik", "title")
         duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
@@ -101,7 +97,7 @@ def stringDuzenle(duzenlenecekString):
 
 def komut(komutDegisken):
     komutDegisken = komutDegisken.replace(' .', '', 1)
-    komutDegisken=ingilizce(komutDegisken)
+    #komutDegisken=ingilizce(komutDegisken)
     if len(komutDegisken.split()) == 1:
         komut1 = komutDegisken.split()
         if komutDegisken == 'mertfsmal':
@@ -109,8 +105,8 @@ def komut(komutDegisken):
         if komutDegisken == 'komutlar':
             print(komutlarJsonPrint)
     if len(komutDegisken.split()) == 2:
-        komut1, komut2 = komutDegisken.split(' ', 1)
-    
+        komut1, komut2 = komutDegisken.split()
+
         if komutDegisken == 'wifi detayli':
             subprocess.call('netsh wlan show profiles', shell=True)
             k=input('Bilgisayarda kayıtlı wifi adresleri yukarıdadır. Detaylı bilgi öğrenmek istediklerinizin adresini girin. ')
@@ -124,9 +120,11 @@ def komut(komutDegisken):
                     results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
                     print ("{:<30}|  {:<}".format(i, results[0]))
         if komut1 == 'komutlar':
-            print(komutlarJson["komutlar"][0][komut2][0])
+            print(komutlarJson["komutlar"][0][komut2])
     if len(komutDegisken.split()) == 3:
-        komut1, komut2, komut3 = komutDegisken.split(' ', 1)
+        komut1, komut2, komut3 = komutDegisken.split()
+        if komut1 == 'komutlar':
+            print(komutlarJson["komutlar"][0][komut2][0][komut3])
     if len(komutDegisken.split()) >= 4:
         print('komut bulunamadı. Bütün komutlar için ".komutlar" yazın')
 try:
@@ -149,5 +147,9 @@ try:
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
 except Exception as e:
-    print('main hata,', e)
+    print('Hata! Hatayı görüntülemek için "e" yazın')
+    ek=input()
+    if ek == 'e':
+        print(e)
     input()
+    pass
