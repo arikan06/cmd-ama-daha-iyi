@@ -124,13 +124,17 @@ def komut(komutDegisken):
     if len(komutDegisken.split()) == 3:
         komut1, komut2, komut3 = komutDegisken.split()
         if komut1 == 'komutlar':
-            print(komutlarJson["komutlar"][0][komut2][0][komut3])
+            if komut3 == 'gereksinim' or 'kullanim' or 'aciklama':
+                print(komutlarJson["komutlar"][0][komut2][0][komut3])
+            else:
+                print('Komut bulunamadı.')
     if len(komutDegisken.split()) >= 4:
         print('komut bulunamadı. Bütün komutlar için ".komutlar" yazın')
-try:
+
+def uygulama():
     while True:
         cmdKomut=input('->  ')
-        if len(cmdKomut.split()) == 0:
+        if len(cmdKomut) == 0:
             print('Çalıştırmak istediğiniz komudu girin.')
             while True:
                 cmdKomut=input('->  ')
@@ -146,10 +150,17 @@ try:
                 komut(calistirilacakKomut)
             else:
                 subprocess.call(calistirilacakKomut, shell=True)
-except Exception as e:
-    print('Hata! Hatayı görüntülemek için "e" yazın')
-    ek=input()
-    if ek == 'e':
-        print(e)
-    input()
-    pass
+
+if __name__ == '__main__':
+    while True:
+        try:
+            uygulama()
+        except Exception as e:
+            print('Hata! Hatayı görüntülemek için "e" yazın')
+            ek=input()
+            if ek == 'e':
+                print(e)
+                input()
+                uygulama()
+            else:
+                uygulama()
