@@ -66,28 +66,28 @@ def stringDuzenle(duzenlenecekString):
         duzenlenecekString = duzenlenecekString.replace("ö", "o")
         duzenlenecekString = duzenlenecekString.replace("ü", "u")
         duzenlenecekStringDegistiMi = duzenlenecekString
+        duzenlenecekString = duzenlenecekString.replace("depolamatamir", "chkdsk")
+        duzenlenecekString = duzenlenecekString.replace("sistem", "systeminfo")
+        duzenlenecekString = duzenlenecekString.replace("baglanti", "netstat")
+        duzenlenecekString = duzenlenecekString.replace("dizinyarat", "mkdir")
+        duzenlenecekString = duzenlenecekString.replace("adlandir", "rename")
+        duzenlenecekString = duzenlenecekString.replace("kurtar", "recover")
+        duzenlenecekString = duzenlenecekString.replace("kapat", "shutdown")
         duzenlenecekString = duzenlenecekString.replace("baslik", "title")
+        duzenlenecekString = duzenlenecekString.replace("emizle", "cls")
         duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
+        duzenlenecekString = duzenlenecekString.replace("yazdir", "echo")
+        duzenlenecekString = duzenlenecekString.replace("yardim", "help")
         duzenlenecekString = duzenlenecekString.replace("renk", "color")
+        duzenlenecekString = duzenlenecekString.replace("yeni", "start")
         duzenlenecekString = duzenlenecekString.replace("zaman", "date")
         duzenlenecekString = duzenlenecekString.replace("tarih", "date")
         duzenlenecekString = duzenlenecekString.replace("saat", "date")
-        duzenlenecekString = duzenlenecekString.replace("bilgi", "cmd")
-        duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
-        duzenlenecekString = duzenlenecekString.replace("agac", "tree")
-        duzenlenecekString = duzenlenecekString.replace("yeni", "start")
-        duzenlenecekString = duzenlenecekString.replace("dizinyarat", "mkdir")
         duzenlenecekString = duzenlenecekString.replace("dizin", "dir")
-        duzenlenecekString = duzenlenecekString.replace("sil", "del")
-        duzenlenecekString = duzenlenecekString.replace("yazdir", "echo")
+        duzenlenecekString = duzenlenecekString.replace("bilgi", "cmd")
+        duzenlenecekString = duzenlenecekString.replace("agac", "tree")
         duzenlenecekString = duzenlenecekString.replace("bul", "find")
-        duzenlenecekString = duzenlenecekString.replace("yardim", "help")
-        duzenlenecekString = duzenlenecekString.replace("kurtar", "recover")
-        duzenlenecekString = duzenlenecekString.replace("adlandir", "rename")
-        duzenlenecekString = duzenlenecekString.replace("baglanti", "netstat")
-        duzenlenecekString = duzenlenecekString.replace("kapat", "shutdown")
-        duzenlenecekString = duzenlenecekString.replace("sistem", "systeminfo")
-        duzenlenecekString = duzenlenecekString.replace("depolamatamir", "chkdsk")
+        duzenlenecekString = duzenlenecekString.replace("sil", "del")
         duzenlenecekString = duzenlenecekString.replace("ac", "cd")
         if duzenlenecekStringDegistiMi == duzenlenecekString:
             duzenlenecekString = duzenlenecekStringTurkce
@@ -97,6 +97,7 @@ def stringDuzenle(duzenlenecekString):
 
 def komut(komutDegisken):
     komutDegisken = komutDegisken.replace(' .', '', 1)
+    #komutDegisken = komutDegisken.replace(' ', '', 1)
     #komutDegisken=ingilizce(komutDegisken)
     if len(komutDegisken.split()) == 1:
         komut1 = komutDegisken.split()
@@ -143,6 +144,7 @@ def uygulama():
         if len(cmdKomut.split()) >= 1:
             calistirilacakKomut = ''
             for kelime in cmdKomut.split():
+                #kelime = f' {kelime} '
                 kelime = stringDuzenle(kelime)
                 calistirilacakKomut += f' {kelime}'
             #print(calistirilacakKomut.startswith())
