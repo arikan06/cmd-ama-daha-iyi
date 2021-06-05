@@ -46,6 +46,17 @@ print('Bütün komutları görmek için ".komutlar" yazın.')
 print()
 time.sleep(0.3)
 
+def ingilizce(ingilizcelestir):
+    ingilizcelestir = ingilizcelestir.replace("İ", "i")
+    ingilizcelestir = ingilizcelestir.lower()
+    ingilizcelestir = ingilizcelestir.replace("ı", "i")
+    ingilizcelestir = ingilizcelestir.replace("ş", "s")
+    ingilizcelestir = ingilizcelestir.replace("ç", "c")
+    ingilizcelestir = ingilizcelestir.replace("ğ", "g")
+    ingilizcelestir = ingilizcelestir.replace("ö", "o")
+    ingilizcelestir = ingilizcelestir.replace("ü", "u")
+    return ingilizcelestir
+
 def stringDuzenle(duzenlenecekString):
     if duzenlenecekString.startswith('"') and duzenlenecekString.endswith('"'):
         if len(duzenlenecekString) == 2:
@@ -57,14 +68,7 @@ def stringDuzenle(duzenlenecekString):
             return duzenlenecekString
     else:
         duzenlenecekStringTurkce = duzenlenecekString
-        duzenlenecekString = duzenlenecekString.replace("İ", "i")
-        duzenlenecekString = duzenlenecekString.lower()
-        duzenlenecekString = duzenlenecekString.replace("ı", "i")
-        duzenlenecekString = duzenlenecekString.replace("ş", "s")
-        duzenlenecekString = duzenlenecekString.replace("ç", "c")
-        duzenlenecekString = duzenlenecekString.replace("ğ", "g")
-        duzenlenecekString = duzenlenecekString.replace("ö", "o")
-        duzenlenecekString = duzenlenecekString.replace("ü", "u")
+        duzenlenecekString=ingilizce(duzenlenecekString)
         duzenlenecekStringDegistiMi = duzenlenecekString
         duzenlenecekString = duzenlenecekString.replace("depolamatamir", "chkdsk")
         duzenlenecekString = duzenlenecekString.replace("sistem", "systeminfo")
@@ -74,7 +78,7 @@ def stringDuzenle(duzenlenecekString):
         duzenlenecekString = duzenlenecekString.replace("kurtar", "recover")
         duzenlenecekString = duzenlenecekString.replace("kapat", "shutdown")
         duzenlenecekString = duzenlenecekString.replace("baslik", "title")
-        duzenlenecekString = duzenlenecekString.replace("emizle", "cls")
+        duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
         duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
         duzenlenecekString = duzenlenecekString.replace("yazdir", "echo")
         duzenlenecekString = duzenlenecekString.replace("yardim", "help")
@@ -96,9 +100,9 @@ def stringDuzenle(duzenlenecekString):
             return duzenlenecekString
 
 def komut(komutDegisken):
-    komutDegisken = komutDegisken.replace(' .', '', 1)
+    komutDegisken = komutDegisken.replace('.', '', 1)
     #komutDegisken = komutDegisken.replace(' ', '', 1)
-    #komutDegisken=ingilizce(komutDegisken)
+    komutDegisken=ingilizce(komutDegisken)
     if len(komutDegisken.split()) == 1:
         komut1 = komutDegisken.split()
         if komutDegisken == 'mertfsmal':
@@ -143,14 +147,13 @@ def uygulama():
                     break
         if len(cmdKomut.split()) >= 1:
             calistirilacakKomut = ''
-            for kelime in cmdKomut.split():
-                #kelime = f' {kelime} '
-                kelime = stringDuzenle(kelime)
-                calistirilacakKomut += f' {kelime}'
             #print(calistirilacakKomut.startswith())
-            if calistirilacakKomut.startswith(' .'):
-                komut(calistirilacakKomut)
+            if cmdKomut.startswith('.'):
+                komut(cmdKomut)
             else:
+                for kelime in cmdKomut.split():
+                    kelime = stringDuzenle(kelime)
+                    calistirilacakKomut += f'{kelime} '
                 subprocess.call(calistirilacakKomut, shell=True)
 
 if __name__ == '__main__':
