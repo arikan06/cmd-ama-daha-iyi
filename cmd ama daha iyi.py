@@ -69,30 +69,31 @@ def stringDuzenle(duzenlenecekString):
     else:
         duzenlenecekStringTurkce = duzenlenecekString
         duzenlenecekString=ingilizce(duzenlenecekString)
+        duzenlenecekString = f' {duzenlenecekString} '
         duzenlenecekStringDegistiMi = duzenlenecekString
-        duzenlenecekString = duzenlenecekString.replace("depolamatamir", "chkdsk")
-        duzenlenecekString = duzenlenecekString.replace("sistem", "systeminfo")
-        duzenlenecekString = duzenlenecekString.replace("baglanti", "netstat")
-        duzenlenecekString = duzenlenecekString.replace("dizinyarat", "mkdir")
-        duzenlenecekString = duzenlenecekString.replace("adlandir", "rename")
-        duzenlenecekString = duzenlenecekString.replace("kurtar", "recover")
-        duzenlenecekString = duzenlenecekString.replace("kapat", "shutdown")
-        duzenlenecekString = duzenlenecekString.replace("baslik", "title")
-        duzenlenecekString = duzenlenecekString.replace("temizle", "cls")
-        duzenlenecekString = duzenlenecekString.replace("ip", "ipconfig")
-        duzenlenecekString = duzenlenecekString.replace("yazdir", "echo")
-        duzenlenecekString = duzenlenecekString.replace("yardim", "help")
-        duzenlenecekString = duzenlenecekString.replace("renk", "color")
-        duzenlenecekString = duzenlenecekString.replace("yeni", "start")
-        duzenlenecekString = duzenlenecekString.replace("zaman", "date")
-        duzenlenecekString = duzenlenecekString.replace("tarih", "date")
-        duzenlenecekString = duzenlenecekString.replace("saat", "date")
-        duzenlenecekString = duzenlenecekString.replace("dizin", "dir")
-        duzenlenecekString = duzenlenecekString.replace("bilgi", "cmd")
-        duzenlenecekString = duzenlenecekString.replace("agac", "tree")
-        duzenlenecekString = duzenlenecekString.replace("bul", "find")
-        duzenlenecekString = duzenlenecekString.replace("sil", "del")
-        duzenlenecekString = duzenlenecekString.replace("ac", "cd")
+        duzenlenecekString = duzenlenecekString.replace(" depolamatamir ", "chkdsk")
+        duzenlenecekString = duzenlenecekString.replace(" sistem ", "systeminfo")
+        duzenlenecekString = duzenlenecekString.replace(" baglanti ", "netstat")
+        duzenlenecekString = duzenlenecekString.replace(" dizinyarat ", "mkdir")
+        duzenlenecekString = duzenlenecekString.replace(" adlandir ", "rename")
+        duzenlenecekString = duzenlenecekString.replace(" kurtar ", "recover")
+        duzenlenecekString = duzenlenecekString.replace(" kapat ", "shutdown")
+        duzenlenecekString = duzenlenecekString.replace(" baslik ", "title")
+        duzenlenecekString = duzenlenecekString.replace(" temizle ", "cls")
+        duzenlenecekString = duzenlenecekString.replace(" ip ", "ipconfig")
+        duzenlenecekString = duzenlenecekString.replace(" yazdir ", "echo")
+        duzenlenecekString = duzenlenecekString.replace(" yardim ", "help")
+        duzenlenecekString = duzenlenecekString.replace(" renk ", "color")
+        duzenlenecekString = duzenlenecekString.replace(" yeni ", "start")
+        duzenlenecekString = duzenlenecekString.replace(" zaman ", "date")
+        duzenlenecekString = duzenlenecekString.replace(" tarih ", "date")
+        duzenlenecekString = duzenlenecekString.replace(" saat ", "date")
+        duzenlenecekString = duzenlenecekString.replace(" dizin ", "dir")
+        duzenlenecekString = duzenlenecekString.replace(" bilgi ", "cmd")
+        duzenlenecekString = duzenlenecekString.replace(" agac ", "tree")
+        duzenlenecekString = duzenlenecekString.replace(" bul ", "find")
+        duzenlenecekString = duzenlenecekString.replace(" sil ", "del")
+        duzenlenecekString = duzenlenecekString.replace(" ac ", "cd")
         if duzenlenecekStringDegistiMi == duzenlenecekString:
             duzenlenecekString = duzenlenecekStringTurkce
             return duzenlenecekString
@@ -155,7 +156,7 @@ def uygulama():
                     kelime = stringDuzenle(kelime)
                     calistirilacakKomut += f'{kelime} '
                 subprocess.call(calistirilacakKomut, shell=True)
-
+                
 if __name__ == '__main__':
     while True:
         try:
