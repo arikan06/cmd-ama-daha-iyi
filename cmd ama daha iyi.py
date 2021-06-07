@@ -152,11 +152,16 @@ def uygulama():
             if cmdKomut.startswith('.'):
                 komut(cmdKomut)
             else:
-                for kelime in cmdKomut.split():
+                if  str(len(cmdKomut.split())) >= komutlarJson['komutlar'][0][ingilizce(cmdKomut.split()[0])][0]['gereksinim']:
                     kelime = stringDuzenle(kelime)
-                    calistirilacakKomut += f'{kelime} '
-                subprocess.call(calistirilacakKomut, shell=True)
-                
+                    for kelime in cmdKomut.split():
+                        if kelime == cmdKomut.split()[len(cmdKomut.split())-1]:
+                            calistirilacakKomut += f'{kelime}'
+                        else:
+                            calistirilacakKomut += f'{kelime} '
+                    subprocess.call(calistirilacakKomut, shell=True)
+                else:
+                    print('Yanlış kullanım. Doğru kullanım: ', komutlarJson['komutlar'][0][ingilizce(cmdKomut.split()[0])][0]['kullanim'])
 if __name__ == '__main__':
     while True:
         try:
