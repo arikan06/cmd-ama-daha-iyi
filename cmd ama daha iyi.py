@@ -69,31 +69,9 @@ def stringDuzenle(duzenlenecekString):
     else:
         duzenlenecekStringTurkce = duzenlenecekString
         duzenlenecekString=ingilizce(duzenlenecekString)
-        duzenlenecekString = f' {duzenlenecekString} '
         duzenlenecekStringDegistiMi = duzenlenecekString
-        duzenlenecekString = duzenlenecekString.replace(" depolamatamir ", "chkdsk")
-        duzenlenecekString = duzenlenecekString.replace(" sistem ", "systeminfo")
-        duzenlenecekString = duzenlenecekString.replace(" baglanti ", "netstat")
-        duzenlenecekString = duzenlenecekString.replace(" dizinyarat ", "mkdir")
-        duzenlenecekString = duzenlenecekString.replace(" adlandir ", "rename")
-        duzenlenecekString = duzenlenecekString.replace(" kurtar ", "recover")
-        duzenlenecekString = duzenlenecekString.replace(" kapat ", "shutdown")
-        duzenlenecekString = duzenlenecekString.replace(" baslik ", "title")
-        duzenlenecekString = duzenlenecekString.replace(" temizle ", "cls")
-        duzenlenecekString = duzenlenecekString.replace(" ip ", "ipconfig")
-        duzenlenecekString = duzenlenecekString.replace(" yazdir ", "echo")
-        duzenlenecekString = duzenlenecekString.replace(" yardim ", "help")
-        duzenlenecekString = duzenlenecekString.replace(" renk ", "color")
-        duzenlenecekString = duzenlenecekString.replace(" yeni ", "start")
-        duzenlenecekString = duzenlenecekString.replace(" zaman ", "date")
-        duzenlenecekString = duzenlenecekString.replace(" tarih ", "date")
-        duzenlenecekString = duzenlenecekString.replace(" saat ", "date")
-        duzenlenecekString = duzenlenecekString.replace(" dizin ", "dir")
-        duzenlenecekString = duzenlenecekString.replace(" bilgi ", "cmd")
-        duzenlenecekString = duzenlenecekString.replace(" agac ", "tree")
-        duzenlenecekString = duzenlenecekString.replace(" bul ", "find")
-        duzenlenecekString = duzenlenecekString.replace(" sil ", "del")
-        duzenlenecekString = duzenlenecekString.replace(" ac ", "cd")
+        if duzenlenecekString in komutlarJson["butun komutlar"].split(','):
+            duzenlenecekString = duzenlenecekString.replace(duzenlenecekString, komutlarJson['komutlar'][0][duzenlenecekString][0]['ceviri'])
         if duzenlenecekStringDegistiMi == duzenlenecekString:
             duzenlenecekString = duzenlenecekStringTurkce
             return duzenlenecekString
@@ -109,7 +87,7 @@ def komut(komutDegisken):
         if komutDegisken == 'mertfsmal':
             mertfsmal()
         if komutDegisken == 'komutlar':
-            print(komutlarJsonPrint)
+            print(komutlarJson["butun komutlar"].split(','))
     if len(komutDegisken.split()) == 2:
         komut1, komut2 = komutDegisken.split()
 
@@ -125,6 +103,7 @@ def komut(komutDegisken):
                     results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', i, 'key=clear']).decode('utf-8', errors="backslashreplace").split('\n')
                     results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
                     print ("{:<30}|  {:<}".format(i, results[0]))
+
         if komut1 == 'komutlar':
             print(komutlarJson["komutlar"][0][komut2])
     if len(komutDegisken.split()) == 3:
@@ -153,8 +132,8 @@ def uygulama():
                 komut(cmdKomut)
             else:
                 if  str(len(cmdKomut.split())) >= komutlarJson['komutlar'][0][ingilizce(cmdKomut.split()[0])][0]['gereksinim']:
-                    kelime = stringDuzenle(kelime)
                     for kelime in cmdKomut.split():
+                        kelime = stringDuzenle(kelime)
                         if kelime == cmdKomut.split()[len(cmdKomut.split())-1]:
                             calistirilacakKomut += f'{kelime}'
                         else:

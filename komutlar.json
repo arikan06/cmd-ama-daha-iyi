@@ -1,4 +1,5 @@
 {
+ "butun komutlar":"baslik,ip,renk,wifi detayli,wifi sifreler,sil,temizle,baslat,dizin,dizin olustur,ac,agac",
  "komutlar": [
   {
    "baslik": [
@@ -13,7 +14,7 @@
     {
      "kullanim": "ip",
      "aciklama": "ip adresinizi gosterir",
-     "gereksinim": "1"
+     "gereksinim": "1",
      "ceviri": "ipconfig"
     }
    ]
@@ -21,7 +22,7 @@
     {
      "kullanim": "renk [renk kodu]",
      "aciklama": "yazilarin rengini degistirir",
-     "gereksinim": "2"
+     "gereksinim": "2",
      "ceviri": "color"
     }
    ]
@@ -29,7 +30,7 @@
     {
      "kullanim": "wifi detayli",
      "aciklama": "wifi detaylarini gosterir",
-     "gereksinim": "2"
+     "gereksinim": "2",
      "ceviri": "echo wifi detayli ozel bir komuttur."
     }
    ]
@@ -37,7 +38,7 @@
     {
      "kullanim": "wifi sifreler",
      "aciklama": "kayitli wifi sifrelerini gosterir",
-     "gereksinim": "2"
+     "gereksinim": "2",
      "ceviri": "echo wifi sifreler ozel bir komuttur"
     }
    ]
@@ -45,7 +46,7 @@
     {
      "kullanim": "sil [silinecek dosyanin adi]",
      "aciklama": "dosya siler",
-     "gereksinim": "2"
+     "gereksinim": "2",
      "ceviri": "del"
     }
    ]
@@ -53,7 +54,7 @@
     {
      "kullanim": "temizle",
      "aciklama": "ekrani temizler",
-     "gereksinim": "1"
+     "gereksinim": "1",
      "ceviri": "cls"
     }
    ]
@@ -61,15 +62,15 @@
     {
      "kullanim": "baslat",
      "aciklama": "yeni cmd baslatir",
-     "gereksinim": "1"
+     "gereksinim": "1",
      "ceviri": "start"
     }
    ]
    ,"dizin": [
     {
      "kullanim": "dizin",
-     "aciklama": "bulundugunuz dizini gosterir",
-     "gereksinim": "1"
+     "aciklama": "bulunugunuz dizini gosterir",
+     "gereksinim": "1",
      "ceviri": "dir"
     }
    ]
@@ -77,7 +78,7 @@
     {
      "kullanim": "dizin olustur [olusturulacak dizin adi]",
      "aciklama": "klasor olusturur",
-     "gereksinim": "3"
+     "gereksinim": "3",
      "ceviri": "mkdir"
     }
    ]
@@ -85,7 +86,7 @@
     {
      "kullanim": "ac [klasor ismi]",
      "aciklama": "klasorlerin icini gormenizi saglar",
-     "gereksinim": "2"
+     "gereksinim": "2",
      "ceviri": "cd"
     }
    ]
@@ -93,7 +94,7 @@
     {
      "kullanim": "agac",
      "aciklama": "bulundugunuz dizindeki dosyalari yazdirir",
-     "gereksinim": "1"
+     "gereksinim": "1",
      "ceviri": "tree"
     }
    ]
