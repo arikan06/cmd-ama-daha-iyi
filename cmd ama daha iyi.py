@@ -16,12 +16,12 @@ try:
     komutlarJsonPrint = json.dumps(komutlarJson, indent=1)
 except FileNotFoundError as e:
     print('Aşağıdaki linkten komutlar.json dosyasını indirin.')
-    print('https://github.com/mertfsmal/cmd-ama-daha-iyi/blob/main/komutlar.json dosyasını indirin.')
+    print('https://github.com/mrtarikan/cmd-ama-daha-iyi/blob/main/komutlar.json dosyasını indirin.')
     input()
 except Exception as e:
     print('json hatası', e)
     input()
-def mertfsmal():
+def mrtarikan():
     time.sleep(0.06)
     print("""                       _    __                     _""")
     time.sleep(0.06)
@@ -36,13 +36,15 @@ def mertfsmal():
     print("""  |_| |_| |_|\___|_|   \__|_| |___/_| |_| |_|\__,_|_|""")
     time.sleep(0.06)
     print()
-mertfsmal()
+mrtarikan()
 time.sleep(0.3)
 print('Versiyon: 3')
 time.sleep(0.3)
-print('Github: github.com/mertfsmal')
+print('Github: github.com/mrtarikan')
 time.sleep(0.3)
 print('Bütün komutları görmek için ".komutlar" yazın.')
+time.sleep(0.3)
+print('Yeni komut eklemek için ".komutlar ekle" yazın.')
 print()
 time.sleep(0.3)
 
@@ -84,8 +86,8 @@ def komut(komutDegisken):
     komutDegisken=ingilizce(komutDegisken)
     if len(komutDegisken.split()) == 1:
         komut1 = komutDegisken.split()
-        if komutDegisken == 'mertfsmal':
-            mertfsmal()
+        if komutDegisken == 'mrtarikan':
+            mrtarikan()
         if komutDegisken == 'komutlar':
             print(komutlarJson["butun komutlar"].split(','))
     if len(komutDegisken.split()) == 2:
@@ -104,8 +106,27 @@ def komut(komutDegisken):
                     results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
                     print ("{:<30}|  {:<}".format(i, results[0]))
 
-        if komut1 == 'komutlar':
-            print(komutlarJson["komutlar"][0][komut2])
+        if komut1 == 'komutlar' and komut2 == 'ekle':
+            komutEkleKomut=input('Eklenecek komut? ')
+            komutEkleKullanim=input('Bu komut nasıl kullanılıyor? ')
+            komutEkleAciklama=input('Bu komut ne yapıyor? ')
+            komutEkleCeviri=input('Bu komudun Türkçesi? ')
+            print('Komut:',komutEkleKomut, 'Kullanım:',komutEkleKullanim, 'Açıklama:',komutEkleAciklama, 'Türkçesi:', komutEkleCeviri, 'eklemek istediğinize emin misiniz?(e/h)')
+            cevap=input('')
+            if cevap=='e':
+                komutEkle = {
+                komutEkleKomut: [
+              {
+               "kullanim": komutEkleKullanim,
+               "aciklama": komutEkleAciklama,
+               "gereksinim": len(komutEkleKullanim.split()),
+               "ceviri": komutEkleCeviri
+                }]}
+                with open('komutlar.json', 'w') as dosya:
+                    json.dump(komutEkle, dosya, indent=1)
+            if cevap =='h':
+                print('İptal edildi.')
+
     if len(komutDegisken.split()) == 3:
         komut1, komut2, komut3 = komutDegisken.split()
         if komut1 == 'komutlar':
