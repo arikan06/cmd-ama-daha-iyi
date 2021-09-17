@@ -48,3 +48,8 @@ Bunları gerçekleştirdikten sonra program sizin girdiğiniz veri eğer üç ke
 
 # Program nasıl çalışıyor? (2.0.0)
 Program ilk önce pip, subprocces, time ve json modüllerini programa ekliyor. Subprocces programda cmd komutlarını çağırmamızı sağlıyor, pip programdaki modül indirme özelliği için, time programın bir kaç saniye beklemesi için, json komutlar.json dosyasıyla çalışmak için. Program açıldığı zaman sizden bir değer istiyor ve bu değeri boş bırakırsanız o değeri doldurana kadar soracak. Değer girildikten sonra değerinize bağlı olarak birinciKomut, ikinciKomut, ikinciUzunKomut, ucuncuKomut olarak değişkenlere atıyor ve bu değişkenler ile program çalışıyor.
+
+--
+
+# Program nasıl çalışıyor? (3.0.0)
+Yazmaya üşendim bir ara yazcam
